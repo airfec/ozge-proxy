@@ -18,15 +18,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Reviews
 const reviewsOptions = {
-  target: 'http://127.0.0.1:3002'
-  // changeOrigin: true
+  target: 'http://ec2-54-183-152-199.us-west-1.compute.amazonaws.com',
+  changeOrigin: true
 };
 const reviewsProxy = proxy(reviewsOptions);
 app.use('/api/rooms/:id/reviews', reviewsProxy);
 
 //Photos
 const photosOptions = {
-  target: 'http://127.0.0.1:3004',
+  target: 'http://ec2-54-193-56-199.us-west-1.compute.amazonaws.com',
   changeOrigin: true
 };
 const photosProxy = proxy(photosOptions);
@@ -34,16 +34,16 @@ app.use('/api/rooms/:id/photos', photosProxy);
 
 //bookings
 const calendarOptions = {
-  target: 'http://127.0.0.1:3001'
-  // changeOrigin: true
+  target: 'http://ec2-54-215-167-214.us-west-1.compute.amazonaws.com',
+  changeOrigin: true
 };
 const calendarProxy = proxy(calendarOptions);
 app.use('/api/rooms/:id/bookings', calendarProxy);
 
 //Room info
 const infoOptions = {
-  target: 'http://127.0.0.1:3003'
-  // changeOrigin: true
+  target: 'http://ec2-18-220-233-85.us-east-2.compute.amazonaws.com',
+  changeOrigin: true
 };
 const infoProxy = proxy(infoOptions);
 app.use('/api/rooms/:id', infoProxy);
